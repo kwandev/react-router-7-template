@@ -2,7 +2,7 @@ import { getList } from "~/entities/sample.api";
 import type { Route } from "./+types/home";
 import type { Todo } from "~/entities/sample.types";
 
-export async function clientLoader() {
+export async function loader() {
   const data = await getList();
   return { data };
 }
