@@ -1,7 +1,6 @@
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
 
 import "~/app/app.css";
-import { Analytics } from "@vercel/analytics/react";
 import { cn } from "./shared/lib/utils";
 import React from "react";
 
@@ -18,8 +17,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
         <ScrollRestoration />
         <Scripts />
-
-        {import.meta.env.PROD && <Analytics />}
       </body>
     </html>
   );
