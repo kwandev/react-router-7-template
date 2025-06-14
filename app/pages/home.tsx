@@ -1,5 +1,5 @@
-import { getList } from "~/entities/sample.api";
 import type { Route } from "./+types/home";
+import { getList } from "~/entities/sample.api";
 import type { Todo } from "~/entities/sample.types";
 
 export async function clientLoader() {
