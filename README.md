@@ -1,87 +1,84 @@
-# Welcome to React Router!
+# React Router 7 프로젝트
 
-A modern, production-ready template for building full-stack React applications using React Router.
+React Router 7을 기반으로 한 React 애플리케이션 템플릿입니다.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+## 🛠️ 기술 스택
 
-## Features
+### 핵심 프레임워크
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+- **React Router 7** (v7.3.0) - 메인 프레임워크, SSR 지원
+- **React** (v19.0.0) - 최신 버전의 React
+- **TypeScript** (v5.7.2) - 타입 안전성을 위한 언어
 
-## Getting Started
+### 스타일링
 
-### Installation
+- **TailwindCSS** (v4.0.0) - 유틸리티 우선 CSS 프레임워크
+- **Tailwind Merge** - Tailwind 클래스 병합 유틸리티
+- **Class Variance Authority** - 컴포넌트 스타일 변형 관리
+- 택 1
+  - **Daisy UI** - https://daisyui.com
+  - **shadcn/ui** - https://ui.shadcn.com
 
-Install the dependencies:
+### 데이터베이스
 
-```bash
-npm install
-```
+- **MongoDB** (v6.18.0) - NoSQL 데이터베이스
 
-### Development
+### 인증
 
-Start the development server with HMR:
+- ~~**Clerk** - 추가예정~~
 
-```bash
-npm run dev
-```
+### 개발 도구
 
-Your application will be available at `http://localhost:5173`.
+- **Vite** (v5.4.11) - 빠른 빌드 도구 및 개발 서버
+- **ESLint** (v9.20.1) - 코드 품질 검사
+  - TypeScript ESLint 플러그인
+  - React Hooks 규칙
+  - Import 경로 최적화
+- **Prettier** (v3.5.1) - 코드 포맷팅
+- **React Router DevTools** - 개발 디버깅 도구
 
-## Building for Production
+### 유틸리티 라이브러리
 
-Create a production build:
+- **Day.js** (v1.11.13) - 날짜/시간 처리
+- **Ky** (v1.7.5) - 현대적인 HTTP 클라이언트
+- **Lucide React** (v0.483.0) - 아이콘 라이브러리
+- **clsx** - 조건부 클래스 이름 유틸리티
 
-```bash
-npm run build
-```
+### 프로젝트 분석 및 기타 도구 (opt)
 
-## Deployment
+- Vercel Analytics
+- Umami
+- ~~GA4~~
+- ~~PostHog~~
+- ~~Clarity~~
+- 구글 서치콘솔
 
-### Docker Deployment
+## 🏗️ 프로젝트 구조
 
-To build and run using Docker:
-
-```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
+Feature-Sliced Design 아키텍처를 따르고 있습니다:
 
 ```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
+app/
+├── app/            # 프로젝트 구성
+├── entities/       # 비즈니스 엔티티
+├── features/       # 기능 단위 모듈
+├── pages/          # 페이지 컴포넌트
+│   └── layouts/    # 레이아웃 컴포넌트
+├── shared/         # 공유 리소스
+└── widgets/        # 복합 UI 블록
 ```
 
-## Styling
+## 📁 코드 구성 가이드
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+- **app/**: Global Styles, Provider 등 앱을 실행하는 모든 요소
+- **entities/**: 도메인 엔티티 및 관련 타입, API
+- **features/**: 독립적인 기능 모듈
+- **pages/**: 라우트에 대응하는 페이지 컴포넌트
+- **shared/**: 전역적으로 사용되는 유틸리티, 상수, 타입
+- **widgets/**: 여러 기능을 조합한 복합 UI 컴포넌트
 
 ---
 
-Built with ❤️ using React Router.
+❤️ React Router 7으로 구축되었습니다.
+
+By. 이경환
