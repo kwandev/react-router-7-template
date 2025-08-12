@@ -23,7 +23,7 @@ export default function HomePage({ loaderData }: Route.ComponentProps) {
   const { data } = loaderData;
 
   return (
-    <main className="mx-auto w-full max-w-screen-md flex-1 px-4">
+    <main className="mx-auto w-full max-w-screen-xl flex-1 px-4">
       <header className="py-5">
         <h1 className="text-2xl font-bold">React Router 7</h1>
       </header>

@@ -26,9 +26,15 @@ export const network = (baseUrl = API_DOMAIN.BASE_URL) => {
     timeout: 30_000,
   });
 
-  const get = async (path: string, params?: any) => {
+  const get = async (path: string, params?: Record<string, unknown>) => {
     const url = removeLeadingSlash(path);
-    return api.get(url, { searchParams: params });
+    const searchParams = new URLSearchParams();
+    if (params) {
+      Object.entries(params).forEach(([key, value]) => {
+        searchParams.append(key, String(value));
+      });
+    }
+    return api.get(url, { searchParams });
   };
 
   const post = async <T = unknown>(path: string, params?: T) => {
@@ -41,9 +47,15 @@ export const network = (baseUrl = API_DOMAIN.BASE_URL) => {
     return api.put(url, { json: params });
   };
 
-  const remove = async (path: string, params?: any) => {
+  const remove = async (path: string, params?: Record<string, unknown>) => {
     const url = removeLeadingSlash(path);
-    return api.delete(url, { searchParams: params });
+    const searchParams = new URLSearchParams();
+    if (params) {
+      Object.entries(params).forEach(([key, value]) => {
+        searchParams.append(key, String(value));
+      });
+    }
+    return api.delete(url, { searchParams });
   };
 
   return { get, post, put, delete: remove };

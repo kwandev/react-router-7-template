@@ -9,11 +9,14 @@ import {
 } from "react-router";
 import "~/app/app.css";
 import type { Route } from "./+types/root";
+import Ga4AnalyticsScript from "./shared/lib/analytics/ga4-script";
+import UmamiAnalyticsScript from "./shared/lib/analytics/umami-script";
+import VercelAnalyticsScript from "./shared/lib/analytics/vercel-script";
 import { cn } from "./shared/lib/utils";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko">
+    <html lang="ko" className="h-full">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -29,15 +32,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {/* <link rel="sitemap" href="/sitemap.xml" /> */}
         {/* <link rel="robots" href="/robots.txt" /> */}
 
-        {/* umami */}
-        {/* {import.meta.env.PROD && (
-          <script
-            defer
-            src="https://cloud.umami.is/script.js"
-            data-website-id={import.meta.env.VITE_UMAMI_ID}
-          ></script>
-        )} */}
-
         {/* google site verification (구글 서치콘솔) */}
         {/* <meta
           name="google-site-verification"
@@ -47,13 +41,17 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="h-full">
         {children}
         <ScrollRestoration />
         <Scripts />
 
-        {/* Vercel Analytics */}
-        {/* {import.meta.env.PROD && <Analytics />} */}
+        {/* Vercel analytics */}
+        <VercelAnalyticsScript />
+        {/* google analytics */}
+        <Ga4AnalyticsScript />
+        {/* umami analytics */}
+        <UmamiAnalyticsScript />
       </body>
     </html>
   );

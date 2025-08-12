@@ -40,7 +40,7 @@ React Router 7을 기반으로 한 React 애플리케이션 템플릿입니다.
 ### 유틸리티 라이브러리
 
 - **Day.js** (v1.11.13) - 날짜/시간 처리
-- **Ky** (v1.7.5) - 현대적인 HTTP 클라이언트
+- **Ky** (v1.7.5) - HTTP 클라이언트
 - **Lucide React** (v0.483.0) - 아이콘 라이브러리
 - **clsx** - 조건부 클래스 이름 유틸리티
 
@@ -48,7 +48,7 @@ React Router 7을 기반으로 한 React 애플리케이션 템플릿입니다.
 
 - Vercel Analytics
 - Umami
-- ~~GA4~~
+- GA4
 - ~~PostHog~~
 - ~~Clarity~~
 - 구글 서치콘솔
@@ -79,6 +79,6 @@ app/
 
 ---
 
-❤️ React Router 7으로 구축되었습니다.
+React Router 7으로 구축되었습니다.
 
 By. 이경환
