@@ -8,7 +8,8 @@
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
     "lint": "eslint . --fix --cache",
-    "format": "prettier --write --cache app/"
+    "format": "prettier --write --cache app/",
+    "prepare": "husky"
   },
   "dependencies": {
     "@react-router/node": "^7.3.0",
@@ -43,6 +44,8 @@
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.16",
     "globals": "^16.2.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.5",
     "prettier": "^3.5.1",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "react-router-devtools": "^1.1.0",
@@ -51,5 +54,11 @@
     "typescript-eslint": "^8.24.1",
     "vite": "^5.4.11",
     "vite-tsconfig-paths": "^5.1.4"
+  },
+  "lint-staged": {
+    "*.{vue,js,ts,tsx,css,scss}": [
+      "npm run format",
+      "npm run lint"
+    ]
   }
 }
