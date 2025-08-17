@@ -10,7 +10,8 @@ public/.well-known/appspecific/com.chrome.devtools.json
 .eslintcache
 
 # Environment variables
-.env.**.*
+.env
+.env.*
 !.env.example
 
 # Dependency directories
