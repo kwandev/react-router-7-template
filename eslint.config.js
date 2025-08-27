@@ -1,12 +1,12 @@
-import prettierConfig from "eslint-config-prettier";
 import js from "@eslint/js";
-import globals from "globals";
+import prettier from "eslint-config-prettier";
+import tailwindBetter from "eslint-plugin-better-tailwindcss";
+import importPlugin from "eslint-plugin-import";
+import noRelativeImportPaths from "eslint-plugin-no-relative-import-paths";
+import prettierPlugin from "eslint-plugin-prettier";
 import reactRecommended from "eslint-plugin-react/configs/recommended.js";
 import reactHooks from "eslint-plugin-react-hooks";
-import prettierPlugin from "eslint-plugin-prettier";
-import noRelativeImportPaths from "eslint-plugin-no-relative-import-paths";
 import tseslint from "typescript-eslint";
-import importPlugin from "eslint-plugin-import";
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -14,19 +14,13 @@ export default [
   ...tseslint.configs.recommended,
   ...tseslint.configs.strict,
   {
-    files: ["**/*.{ts,tsx}"],
-    languageOptions: {
-      globals: {
-        ...globals.browser
-      },
-    },
     plugins: {
       react: reactRecommended,
       "react-hooks": reactHooks,
-      // "react-refresh": reactRefresh,
-      prettier: prettierPlugin,
       import: importPlugin,
       "no-relative-import-paths": noRelativeImportPaths,
+      "better-tailwindcss": tailwindBetter,
+      prettier: prettierPlugin,
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
@@ -65,8 +59,34 @@ export default [
         },
       ],
       "no-empty-pattern": "warn",
+      ...tailwindBetter.configs["recommended"].rules,
+      "better-tailwindcss/enforce-consistent-line-wrapping": [
+        "error",
+        { group: "newLine", preferSingleLine: false, printWidth: 100 },
+      ],
+      "better-tailwindcss/no-unregistered-classes": "off",
+    },
+    settings: {
+      "better-tailwindcss": {
+        entryPoint: "app/app/app.css",
+      },
     },
   },
-  prettierConfig,
-  { ignores: ["dist", ".react-router", "node_modules", "build"] },
+  prettier,
+  {
+    ignores: [
+      "dist",
+      ".react-router",
+      "node_modules",
+      "build",
+      ".cursor",
+      ".windsurf",
+      "playwright-report",
+      "test-results",
+      "coverage",
+      "**/*.min.js",
+      "**/.env*",
+      "public",
+    ],
+  },
 ];
