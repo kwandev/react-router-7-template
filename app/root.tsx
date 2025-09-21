@@ -9,9 +9,11 @@ import {
 } from "react-router";
 import "~/app/app.css";
 import type { Route } from "./+types/root";
-import Ga4AnalyticsScript from "./shared/lib/analytics/ga4-script";
-import UmamiAnalyticsScript from "./shared/lib/analytics/umami-script";
-import VercelAnalyticsScript from "./shared/lib/analytics/vercel-script";
+import {
+  Ga4AnalyticsScript,
+  UmamiAnalyticsScript,
+  VercelAnalyticsScript,
+} from "./shared/lib/analytics";
 import { cn } from "./shared/lib/utils";
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -46,12 +48,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <ScrollRestoration />
         <Scripts />
 
-        {/* Vercel analytics */}
-        <VercelAnalyticsScript />
         {/* google analytics */}
         <Ga4AnalyticsScript />
         {/* umami analytics */}
         <UmamiAnalyticsScript />
+        {/* Vercel analytics */}
+        <VercelAnalyticsScript />
       </body>
     </html>
   );

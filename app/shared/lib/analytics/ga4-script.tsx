@@ -1,4 +1,4 @@
-export default function Ga4AnalyticsScript() {
+export function Ga4AnalyticsScript() {
   const googleTagId = import.meta.env.VITE_GOOGLE_TAG_ID ?? "";
 
   if (!googleTagId || googleTagId === "") {

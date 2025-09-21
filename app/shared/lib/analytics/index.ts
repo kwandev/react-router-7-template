@@ -1,3 +1,7 @@
+export * from "./ga4-script";
+export * from "./umami-script";
+export * from "./vercel-script";
+
 declare global {
   interface Window {
     gtag: (command: string, event: string, params?: Record<string, unknown>) => void;

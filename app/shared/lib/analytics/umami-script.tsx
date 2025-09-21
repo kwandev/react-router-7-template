@@ -1,4 +1,4 @@
-export default function UmamiAnalyticsScript() {
+export function UmamiAnalyticsScript() {
   const umamiId = import.meta.env.VITE_UMAMI_ID ?? "";
 
   if (!import.meta.env.PROD) {

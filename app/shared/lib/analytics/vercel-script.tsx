@@ -1,5 +1,5 @@
 import { Analytics } from "@vercel/analytics/react";
 
-export default function VercelAnalyticsScript() {
+export function VercelAnalyticsScript() {
   return <Analytics debug={!import.meta.env.PROD} />;
 }
