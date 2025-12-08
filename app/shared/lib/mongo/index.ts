@@ -133,7 +133,7 @@ class MongoDBService {
 
 // 싱글톤 인스턴스
 const mongoService = new MongoDBService();
-// 서비스 인스턴스도 익스포트 (고급 사용을 위해)
+
 export { mongoService };
 
 // 기존 API 호환성을 위한 익스포트

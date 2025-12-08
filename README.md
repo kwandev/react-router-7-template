@@ -7,7 +7,7 @@ React Router 7을 기반으로 한 React 애플리케이션 템플릿입니다.
 ### 핵심 프레임워크
 
 - **React Router 7** (v7.3.0) - 메인 프레임워크, SSR 지원
-- **React** (v19.0.0) - 최신 버전의 React
+- **React** (v19.2.1) - 최신 버전의 React
 - **TypeScript** (v5.7.2) - 타입 안전성을 위한 언어
 
 ### 스타일링
@@ -29,7 +29,7 @@ React Router 7을 기반으로 한 React 애플리케이션 템플릿입니다.
 
 ### 개발 도구
 
-- **Vite** (v5.4.11) - 빠른 빌드 도구 및 개발 서버
+- **Vite** (v7.2.6) - 빠른 빌드 도구 및 개발 서버
 - **ESLint** (v9.20.1) - 코드 품질 검사
   - TypeScript ESLint 플러그인
   - React Hooks 규칙
@@ -78,7 +78,5 @@ app/
 - **widgets/**: 여러 기능을 조합한 복합 UI 컴포넌트
 
 ---
-
-React Router 7으로 구축되었습니다.
 
 By. 이경환
