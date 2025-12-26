@@ -7,6 +7,18 @@ export const API_DOMAIN = {
   BASE_URL: import.meta.env.VITE_API_BASE_URL,
 } as const;
 
+type NetworkOptions = {
+  baseUrl?: string;
+  headers?: Record<string, string>;
+};
+
+const defaultOptions: NetworkOptions = {
+  baseUrl: API_DOMAIN.BASE_URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
+};
+
 /**
  * 경로에서 앞에 '/'가 있으면 제거함
  * @param path 경로
@@ -16,11 +28,12 @@ const removeLeadingSlash = (path: string): string => {
   return path.startsWith("/") ? path.substring(1) : path;
 };
 
-export const network = (baseUrl = API_DOMAIN.BASE_URL) => {
+export const network = (options: NetworkOptions = defaultOptions) => {
   const api = ky.create({
-    prefixUrl: baseUrl,
+    prefixUrl: options.baseUrl ?? defaultOptions.baseUrl,
     headers: {
-      "Content-Type": "application/json",
+      ...defaultOptions.headers,
+      ...options.headers,
     },
     retry: 1,
     timeout: 30_000,
