@@ -1,6 +1,6 @@
-export * from "./ga4-script";
-export * from "./umami-script";
-export * from "./vercel-script";
+export { Ga4AnalyticsScript } from "./ga4-script";
+export { UmamiAnalyticsScript } from "./umami-script";
+export { VercelAnalyticsScript } from "./vercel-script";
 
 declare global {
   interface Window {

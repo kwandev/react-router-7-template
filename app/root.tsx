@@ -7,7 +7,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
-import "~/app/app.css";
+import "~/app/styles/app.css";
 import type { Route } from "./+types/root";
 import {
   Ga4AnalyticsScript,

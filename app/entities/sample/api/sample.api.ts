@@ -1,4 +1,4 @@
-import type { Todo } from "./sample.types";
+import type { Todo } from "~/entities/sample/model/sample.types";
 import { network } from "~/shared/lib/network";
 
 export const API_DOMAIN = {

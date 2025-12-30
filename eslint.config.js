@@ -47,7 +47,7 @@ export default [
       ],
       "no-relative-import-paths/no-relative-import-paths": [
         "warn",
-        { allowSameFolder: true, rootDir: "src", prefix: "@" },
+        { allowSameFolder: true, rootDir: "app", prefix: "~" },
       ],
       "@typescript-eslint/no-explicit-any": "warn",
       "@typescript-eslint/unified-signatures": "off",
@@ -68,7 +68,7 @@ export default [
     },
     settings: {
       "better-tailwindcss": {
-        entryPoint: "app/app/app.css",
+        entryPoint: "app/app/styles/app.css",
       },
     },
   },

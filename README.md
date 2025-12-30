@@ -1,6 +1,6 @@
-# React Router 7 프로젝트
+# React Router 7 템플릿
 
-React Router 7을 기반으로 한 React 애플리케이션 템플릿입니다.
+React Router 7(Remix)을 기반으로 한 React 애플리케이션 템플릿입니다.
 
 ## 🛠️ 기술 스택
 
@@ -12,7 +12,7 @@ React Router 7을 기반으로 한 React 애플리케이션 템플릿입니다.
 
 ### 스타일링
 
-- **TailwindCSS** (v4.0.0) - 유틸리티 우선 CSS 프레임워크
+- **TailwindCSS** (v4.1.12) - 유틸리티 우선 CSS 프레임워크
 - **Tailwind Merge** - Tailwind 클래스 병합 유틸리티
 - **Class Variance Authority** - 컴포넌트 스타일 변형 관리
 - 택 1
@@ -25,23 +25,24 @@ React Router 7을 기반으로 한 React 애플리케이션 템플릿입니다.
 
 ### 인증
 
-- ~~**Clerk** - 추가예정~~
+- ~~**Clerk**~~
 
 ### 개발 도구
 
 - **Vite** (v7.2.6) - 빠른 빌드 도구 및 개발 서버
+- **Vitest** (v4.0.16) - 단위, 통합 테스트 도구
+- **Prettier** (v3.5.1) - 코드 포맷팅
 - **ESLint** (v9.20.1) - 코드 품질 검사
   - TypeScript ESLint 플러그인
   - React Hooks 규칙
   - Import 경로 최적화
-- **Prettier** (v3.5.1) - 코드 포맷팅
 - **React Router DevTools** - 개발 디버깅 도구
 
 ### 유틸리티 라이브러리
 
 - **Day.js** (v1.11.13) - 날짜/시간 처리
 - **Ky** (v1.7.5) - HTTP 클라이언트
-- **Lucide React** (v0.483.0) - 아이콘 라이브러리
+- **Lucide React** (v0.483.0) - 아이콘 라이브러리 (shadcn 포함, opt)
 - **clsx** - 조건부 클래스 이름 유틸리티
 
 ### 프로젝트 분석 및 기타 도구 (opt)
@@ -55,7 +56,7 @@ React Router 7을 기반으로 한 React 애플리케이션 템플릿입니다.
 
 ## 🏗️ 프로젝트 구조
 
-Feature-Sliced Design 아키텍처를 따르고 있습니다:
+Feature-Sliced Design 아키텍처를 따르고 있습니다
 
 ```
 app/

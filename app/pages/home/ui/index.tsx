@@ -1,6 +1,6 @@
-import type { Route } from "./+types/home";
-import { getList } from "~/entities/sample.api";
-import type { Todo } from "~/entities/sample.types";
+import type { Route } from "./+types";
+import { getList } from "~/entities/sample/api/sample.api";
+import type { Todo } from "~/entities/sample/model/sample.types";
 
 export async function loader() {
   const data = await getList();

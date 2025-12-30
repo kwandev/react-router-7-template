@@ -1,6 +1,7 @@
 {
   "recommendations": [
-    "Vue.volar",
+    "dsznajder.es7-react-js-snippets",
+    "burkeholland.simple-react-snippets",
     "vitest.explorer",
     "dbaeumer.vscode-eslint",
     "EditorConfig.EditorConfig",

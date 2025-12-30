@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [
-      // ...(isTest ? [] : [reactRouterDevTools()]),
+      // reactRouterDevTools(),
       tailwindcss(),
       ...(isTest ? [react()] : [reactRouter()]),
       tsconfigPaths(),
@@ -25,6 +25,23 @@ export default defineConfig(({ mode }) => {
       environment: "jsdom",
       setupFiles: ["./app/test/setup-tests.ts"],
       include: ["app/**/*.{test,spec}.{ts,tsx}", "app/**/__tests__/**/*.{ts,tsx}"],
+      exclude: ["node_modules/**/*"],
+      coverage: {
+        provider: "v8",
+        exclude: [
+          "build/**",
+          "dist/**",
+          "node_modules/**",
+          ".react-router/**",
+          "public/**",
+          "e2e/**",
+          "playwright-report/**",
+          "test-results/**",
+          "**/*.config.{ts,js}",
+          "**/*.d.ts",
+          ".better-commits.json",
+        ],
+      },
       css: true,
     },
   };
