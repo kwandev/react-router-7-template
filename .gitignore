@@ -1,6 +1,6 @@
 .DS_Store
 /node_modules/
-public/.well-known/appspecific/com.chrome.devtools.json
+# public/.well-known/appspecific/com.chrome.devtools.json
 
 # React Router
 /.react-router/
