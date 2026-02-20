@@ -10,15 +10,19 @@ const DB_NAME = isServer ? process.env.MONGODB_DB_NAME || "" : "";
 
 // 연결 관리를 위한 클래스
 class MongoDBService {
-  private client?: MongoClient;
-  private db?: Db;
-  private connecting = false;
+  private _client?: MongoClient;
+  private _db?: Db;
+  private _connecting = false;
 
   constructor() {
     // 서버 환경에서만 process 이벤트 리스너 등록
     if (isServer) {
       this.setupProcessHandlers();
     }
+  }
+
+  get client() {
+    return this._client;
   }
 
   private setupProcessHandlers() {
@@ -32,6 +36,7 @@ class MongoDBService {
     process.on("SIGTERM", () => gracefulShutdown("SIGTERM"));
   }
 
+  // DB connect
   async connect() {
     // 브라우저 환경에서는 에러 반환
     if (!isServer) {
@@ -45,30 +50,30 @@ class MongoDBService {
     }
 
     // 이미 연결되어 있으면 기존 연결 반환
-    if (this.client && this.db) {
+    if (this._client && this._db) {
       try {
         // 연결 상태 확인
-        await this.client.db("admin").command({ ping: 1 });
-        return { client: this.client, db: this.db };
+        await this._client.db("admin").command({ ping: 1 });
+        return { client: this._client, db: this._db };
       } catch {
         // 연결이 끊어진 경우 재연결
-        this.client = undefined;
-        this.db = undefined;
+        this._client = undefined;
+        this._db = undefined;
       }
     }
 
     // 연결 중인 경우 대기
-    if (this.connecting) {
-      while (this.connecting) {
+    if (this._connecting) {
+      while (this._connecting) {
         await new Promise((resolve) => setTimeout(resolve, 100));
       }
-      return { client: this.client, db: this.db };
+      return { client: this._client, db: this._db };
     }
 
-    this.connecting = true;
+    this._connecting = true;
 
     try {
-      this.client = new MongoClient(MONGODB_URI, {
+      this._client = new MongoClient(MONGODB_URI, {
         serverApi: {
           version: ServerApiVersion.v1,
           strict: true,
@@ -76,45 +81,49 @@ class MongoDBService {
         },
       });
 
-      await this.client.connect();
-      this.db = this.client.db(DB_NAME);
+      await this._client.connect();
+      this._db = this._client.db(DB_NAME);
 
       console.log("✅ MongoDB 연결 성공!");
-      return { client: this.client, db: this.db };
+      return { client: this._client, db: this._db };
     } catch (error) {
       console.error("❌ MongoDB 연결 실패:", error);
-      this.client = undefined;
-      this.db = undefined;
+      this._client = undefined;
+      this._db = undefined;
       throw error;
     } finally {
-      this.connecting = false;
+      this._connecting = false;
     }
   }
 
+  // DB disconnect
   async disconnect() {
-    if (this.client) {
-      await this.client.close();
-      this.client = undefined;
-      this.db = undefined;
+    if (this._client) {
+      await this._client.close();
+      this._client = undefined;
+      this._db = undefined;
       console.log("✅ MongoDB 연결 해제");
     }
   }
 
+  // DB get
   async getDB(): Promise<Db> {
-    if (!this.db) {
+    if (!this._db) {
       await this.connect();
     }
-    if (!this.db) {
+    if (!this._db) {
       throw new Error("MongoDB 연결이 없습니다");
     }
-    return this.db;
+    return this._db;
   }
 
+  // DB get collection
   async getCollection(name: string) {
     const database = await this.getDB();
     return database.collection(name);
   }
 
+  // DB check connection
   async checkConnection(): Promise<boolean> {
     if (!isServer) return false;
 
@@ -135,10 +144,3 @@ class MongoDBService {
 const mongoService = new MongoDBService();
 
 export { mongoService };
-
-// 기존 API 호환성을 위한 익스포트
-export const connectDB = () => mongoService.connect();
-export const disconnectDB = () => mongoService.disconnect();
-export const getDB = () => mongoService.getDB();
-export const getCollection = (name: string) => mongoService.getCollection(name);
-export const checkConnection = () => mongoService.checkConnection();

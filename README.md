@@ -64,7 +64,6 @@ app/
 ├── entities/       # 비즈니스 엔티티
 ├── features/       # 기능 단위 모듈
 ├── pages/          # 페이지 컴포넌트
-│   └── layouts/    # 레이아웃 컴포넌트
 ├── shared/         # 공유 리소스
 └── widgets/        # 복합 UI 블록
 ```
